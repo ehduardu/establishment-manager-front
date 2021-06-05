@@ -15,16 +15,14 @@ export const AuthProvider = ({ children }) => {
   });
 
   const signIn = useCallback((formData) => {
-    console.log("FORM:");
-
     console.log(formData);
 
     if (typeof window !== "undefined") {
       localStorage.setItem(
         "@EstablishmentManager:User",
-        JSON.stringify(formData)
+        JSON.stringify({ ...formData, signed: true })
       );
-      setData(formData);
+      setData({ ...formData, signed: true });
     }
   }, []);
   return (
@@ -33,6 +31,7 @@ export const AuthProvider = ({ children }) => {
         email: data.email,
         name: data.name,
         googleId: data.googleId,
+        signed: data.signed,
         signIn,
       }}
     >

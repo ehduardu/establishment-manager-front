@@ -1,17 +1,20 @@
 import React, { useContext } from "react";
 import { GoogleLogin } from "react-google-login";
 import { toast } from "react-toastify";
+import { useHistory } from "react-router-dom";
 
 import logo from "../../assets/store.png";
 import Container from "../../components/UI/Container";
-import AuthLayout from "../_layouts/auth";
-import { Titulo } from "./styles";
+import DefaultLayout from "../_layouts/default";
 import { AuthContext } from "../../context/AuthContext";
-import history from "../../services/history";
+
 import api from "../../services/api";
+
+import { Titulo } from "./styles";
 
 export default function SignIn() {
   const { signIn } = useContext(AuthContext);
+  const history = useHistory();
 
   const responseGoogleLogin = async (response) => {
     const googleData = {
@@ -31,7 +34,7 @@ export default function SignIn() {
 
       signIn(loginResponse.data);
       toast.success("Login realizado com sucesso", { autoClose: 5000 });
-      history.push("/dashboard");
+      history.push("/home");
     } catch (error) {
       console.log(error.response.status);
 
@@ -55,7 +58,7 @@ export default function SignIn() {
 
       signIn(loginResponse.data);
       toast.success("Cadastro realizado com sucesso", { autoClose: 5000 });
-      history.push("/dashboard");
+      history.push("/home");
     } catch (error) {
       console.log(error.response.status);
       toast.warn(error.response.data.message, { autoClose: 5000 });
@@ -63,9 +66,9 @@ export default function SignIn() {
   };
 
   return (
-    <AuthLayout>
+    <DefaultLayout>
       <Container>
-        <img src={logo} alt="Safetec" />
+        <img src={logo} alt="Logotipo" />
 
         <form>
           <Titulo>Bem-vindo ao Gerenciador de Estabelecimentos</Titulo>
@@ -100,6 +103,6 @@ export default function SignIn() {
           />
         </form>
       </Container>
-    </AuthLayout>
+    </DefaultLayout>
   );
 }
