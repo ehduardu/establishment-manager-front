@@ -1,11 +1,11 @@
 # Establishment Manager
 
-#### Funcionalidades
+## Funcionalidades
 
 - Login (autenticação de usuário) com Google
 - Listagem de repositórios
 
-# Tecnologias
+## Tecnologias
 
 - ReactJS
 - Axios
@@ -18,7 +18,7 @@
 
 ![example3](pic3.png)
 
-## Run
+## Executar
 
-yarn &&
-yarn start
+npm i &&
+npm start
