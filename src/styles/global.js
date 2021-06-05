@@ -1,5 +1,7 @@
 import { createGlobalStyle } from "styled-components";
 
+import "react-toastify/dist/ReactToastify.css";
+
 export default createGlobalStyle`
 
   *{
@@ -25,6 +27,7 @@ export default createGlobalStyle`
 
   body, input, button{
     font: 14px 'Roboto', sans-serif;
+    caret-color: transparent;
   }
 
   a {
